@@ -1,0 +1,36 @@
+<div class="jumbotron text-center">
+			<form action="/form_search" method="post">
+				<div class="form-group">
+					<label for="artistName">Artist</label>
+					<input type="text" class="form-control" id="artistName" placeholder="Taylor Swift">
+					
+				</div>
+				<div class="form-group">
+					<label for="location">location</label>
+					<input type="text" class="form-control" id="location" placeholder="Berkeley">
+				</div>
+				<div class="form-group">
+					<label for="date">location</label>
+					<input type="text" class="form-control" id="date" placeholder="02/05/2018">
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>	
+			<hr>
+			<hr>	
+			<form ref='uploadForm' id='uploadForm' action='/file_search' method='post' encType="multipart/form-data">
+				<input type="file" name="sampleFile" />
+				<input type='submit' value='Upload!' />
+			</form>
+
+			<hr>
+			<hr>
+			<div class="jumbotron text-center">
+			<h4> Record the Song and Find the info</h4>
+			<button><i class="fa fa-microphone fa-2x" aria-hidden="true" id="icon"></i></button>
+			<button id="record">Start recording</button>
+
+			<button id="stop">Stop recording</button>
+			</div>
+			<div class="audio-data"></div>
+			
+		</div>

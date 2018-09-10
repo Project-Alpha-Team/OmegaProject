@@ -1,140 +1,149 @@
+<header>
+    <div class="navbar navbar-add flex-between">
+        <h2>BandWagon</h2>
+        <section class='navigation'>
+            <ul class="nav-item-wrapper">
+                <li>
+                    <a class="navitems" href="/">SEARCH</a>
+                </li>
+                <li>
+                    <a class="navitems" href="portfolio.html">HELP</a>
+                </li>
+                <li>
+                    <a class="navitems" id='signUp_button'>SIGN IN</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div class='head-img-wrapper'>
+        <img src='../public/images/bg-masthead.jpg' alt='picture of live concert as theme for the web page.'>
+        <!-- Photo by Josh Sorenson from Pexels -->
+        <div id="signUp_pop" class="modal">
+            <div class="modal-content">
+                <span class="close" id='close_button'>&times;</span>
+                <form class="modal-content">
+                    <div class="container">
+                        <h1>Sign Up</h1>
+                        <p>Please fill in this form to create an account.</p>
+                        <hr>
+                        <label for="email">
+                            <b>Email</b>
+                        </label>
+                        <input id='account-email' type="text" placeholder="Enter Email" name="email" required>
 
-    <header>
-        <div class="navbar navbar-add flex-between">
-            <h2>BandWagon</h2>
-            <section class='navigation'>
-                <ul class="nav-item-wrapper">
-                    <li><a class="navitems" href="/">SEARCH</a></li>
-                    <li><a class="navitems" href="portfolio.html">HELP</a></li>
-                    <li><a class="navitems" id='signUp_button'>SIGN IN</a></li>
-                </ul>
-            </section>
-        </div>
-        <div class='head-img-wrapper'>
-            <img src='../public/images/bg-masthead.jpg' alt='picture of live concert as theme for the web page.'>
-            <!-- Photo by Josh Sorenson from Pexels -->
-            <div id="signUp_pop" class="modal">
-                <div class="modal-content">
-                    <span class="close" id='close_button'>&times;</span>
-                    <form class="modal-content">
-                        <div class="container">
-                            <h1>Sign Up</h1>
-                            <p>Please fill in this form to create an account.</p>
-                            <hr>
-                            <label for="email"><b>Email</b></label>
-                            <input id='account-email' type="text" placeholder="Enter Email" name="email" required>
+                        <label for="psw">
+                            <b>Password</b>
+                        </label>
+                        <input id='account-password' type="password" placeholder="Enter Password" name="psw" required>
 
-                            <label for="psw"><b>Password</b></label>
-                            <input id='account-password' type="password" placeholder="Enter Password" name="psw"
-                                required>
+                        <label for="psw-repeat">
+                            <b>Repeat Password</b>
+                        </label>
+                        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-                            <label for="psw-repeat"><b>Repeat Password</b></label>
-                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                        </label>
 
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">
-                                Remember me
-                            </label>
+                        <p>By creating an account you agree to our
+                            <a href="#" style="color:dodgerblue">Terms & Privacy
+                            </a>.</p>
 
-                            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms &
-                                    Privacy</a>.</p>
-
-                            <div class="clearfix">
-                                <button id='cancel-btn' type="button" onclick="document.getElementById('signUp_pop').style.display='none'"
-                                    class="cancelbtn">Cancel</button>
-                                <button id='singUp-form-btn' type="submit" class="signupbtn">Sign Up</button>
-                            </div>
+                        <div class="clearfix">
+                            <button id='cancel-btn' type="button" onclick="document.getElementById('signUp_pop').style.display='none'" class="cancelbtn">Cancel</button>
+                            <button id='singUp-form-btn' type="submit" class="signupbtn">Sign Up</button>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class='title-wrapper flex-center'>
-            <h1 class="text-light">Get on the bandwagon</h1>
-            <div class='form-wrapper text-format'>
-                <form class='form-attribute hther'>
-                    <div class='form-group'>
-                        <input type="name" class="form-control" id="artist-name" placeholder="artist/keyword">
                     </div>
-
-                    <div class='form-group'>
-                        <input type="location" class="form-control" id="location" placeholder="Berkeley">
-                    </div>
-
-                    <div class='form-group'>
-                        <input type="text" class="form-control" id="date" placeholder="2018-08-20">
-                    </div>
-
-                    <input type="button" class="btn btn-warning" id='sendform' value="search">
                 </form>
             </div>
         </div>
-    </header>
-   
-    
-    <div>
-       
-        <div class="jumbotron text-center">
+    </div>
+    <div class='title-wrapper flex-center'>
+        <h1 class="text-light">Get on the bandwagon</h1>
+        <div class='form-wrapper text-format'>
+            <form class='form-attribute hther'>
+                <div class='form-group'>
+                    <input type="name" class="form-control" id="artist-name" placeholder="artist/keyword">
+                </div>
+
+                <div class='form-group'>
+                    <input type="location" class="form-control" id="location" placeholder="Berkeley">
+                </div>
+
+                <div class='form-group'>
+                    <input type="text" class="form-control" id="date" placeholder="2018-08-20">
+                </div>
+
+                <input type="button" class="btn btn-warning" id='sendform' value="search">
+            </form>
+        </div>
+    </div>
+</header>
+
+
+<div>
+
+    <div class="jumbotron text-center">
         <form ref='uploadForm' id='uploadForm' action='/file_search' method='post' encType="multipart/form-data">
-        <input type="file" name="sampleFile" />
-        <input type='submit' value='Upload!' />
+            <input type="file" name="sampleFile" />
+            <input type='submit' value='Upload!' />
         </form>
         <hr>
         <h4> Record the Song and Find the info</h4>
-        <i class="fa fa-microphone fa-5x record-icon" style="color:blue;"aria-hidden="true" id="icon"></i>
+        <i class="fa fa-microphone fa-5x record-icon" style="color:blue;" aria-hidden="true" id="icon"></i>
 
         <hr>
 
         <div class="audio-data"></div>
-        </div>
-        
     </div>
 
-    <footer class="black-foot">
-        <div class="footer-wrapper">
-            <div class="component-wrapper-left">
-                <a class="link-white" href="index.html">
+</div>
 
-                </a>
-                <div class="icon-wrapper">
-                    <ul>
-                        <li class="icon">
-                            <a href="https://www.linkedin.com/in/takahiro-kawaguchi-972aa2134/">
-                                <i class="fab fa-linkedin fa-2x" alt="linkedin icon"></i>
-                            </a>
-                        </li>
-                        <li class="icon">
-                            <a href="https://github.com/aaio0413">
-                                <i class="fab fa-github fa-2x" alt="github icon"></i>
-                            </a>
-                        </li>
-                        <li class="icon">
-                            <a href="https://www.facebook.com/takahiro.kawaguchi.904">
-                                <i class="fab fa-facebook-square fa-2x" alt="facebook icon"></i>
-                            </a>
-                        </li>
-                        <li class="icon">
-                            <a href="https://twitter.com/aaio_0413">
-                                <i class="fab fa-twitter-square fa-2x" alt="twitter icon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="component-wrapper-right">
+<footer class="black-foot">
+    <div class="footer-wrapper">
+        <div class="component-wrapper-left">
+            <a class="link-white" href="index.html">
 
-                
-                <div class="fourth-footer">
-                    <h2>Who are we ?</h2>
-                    <br>
-                    <ul class="footer-contents">
-                    <li>About Us</li>
-                    <li><a href="./contact" style="text-decoration:none">Contact Us</a></li>
-                     
-                    </ul>
-                </div>
+            </a>
+            <div class="icon-wrapper">
+                <ul>
+                    <li class="icon">
+                        <a href="https://www.linkedin.com">
+                            <i class="fab fa-linkedin fa-2x" alt="linkedin icon"></i>
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="https://github.com/Project-Alpha-Team/OmegaProject">
+                            <i class="fab fa-github fa-2x" alt="github icon"></i>
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="https://www.facebook.com">
+                            <i class="fab fa-facebook-square fa-2x" alt="facebook icon"></i>
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="https://twitter.com">
+                            <i class="fab fa-twitter-square fa-2x" alt="twitter icon"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="component-wrapper-right">
 
-   
+
+            <div class="fourth-footer">
+                <h2>Who are we ?</h2>
+                <br>
+                <ul class="footer-contents">
+                    <li>About Us</li>
+                    <li>
+                        <a href="./contact" style="text-decoration:none">Contact Us</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

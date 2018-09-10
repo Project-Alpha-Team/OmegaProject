@@ -11,7 +11,7 @@ var fs = require('fs');
 const fileUpload = require('express-fileupload');
 var crypto = require('crypto');
 var request = require('request');
-
+var path = require("path");
 /* **************************************************************************** */
 /* **************************************************************************** */
 
@@ -33,6 +33,15 @@ app.get("/", function(req, res) {
   res.render("index");
   console.log("index loaded \n")
 });
+app.get("/public/images/bg-masthead.jpg", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/images/bg-masthead.jpg"));
+  
+});
+app.get("/contact", function(req, res) {
+  res.render("contact");
+  
+});
+
 
 /* **************************************************************************** */
 /* **************************************************************************** */

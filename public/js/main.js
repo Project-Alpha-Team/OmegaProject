@@ -1,18 +1,18 @@
 
 			var recordButton, stopButton, recorder;
-
+			var toggle=0;
 			window.onload = function () {
-  			recordButton = document.getElementById('record');
-  			stopButton = document.getElementById('stop');
+  			// recordButton = document.getElementById('record');
+  			// stopButton = document.getElementById('stop');
 
 			// get audio stream from user's mic
 			navigator.mediaDevices.getUserMedia({
 				audio: true
 			})
 			.then(function (stream) {
-				recordButton.disabled = false;
-				recordButton.addEventListener('click', startRecording);
-				stopButton.addEventListener('click', stopRecording);
+				// recordButton.disabled = false;
+				// recordButton.addEventListener('click', startRecording);
+				// stopButton.addEventListener('click', stopRecording);
 				recorder = new MediaRecorder(stream);
 
 				// listen to dataavailable, which gets triggered whenever we have
@@ -22,15 +22,16 @@
 			};
 
 			function startRecording() {
-			recordButton.disabled = true;
-			stopButton.disabled = false;
+			// recordButton.disabled = true;
+			// stopButton.disabled = false;
 
 			recorder.start();
 			}
 
 			function stopRecording() {
-			recordButton.disabled = false;
-			stopButton.disabled = true;
+				
+			// recordButton.disabled = false;
+			// stopButton.disabled = true;
 
 			// Stopping the recorder will eventually trigger the `dataavailable` event and we can complete the recording process
 			recorder.stop();
@@ -70,6 +71,7 @@
 
 			}
 			$(document).ready(() => {
+
 				$("#uploadForm").on('submit', function(e) {
 					e.preventDefault();
 					console.log('e', e);
@@ -91,5 +93,19 @@
 							scrollTop: $(".audio-data").offset().top
 						}, 500);
 						});
+					});
+
+					$(".record-icon").click(function () {
+						
+						if (toggle==0){
+							recorder.start();
+							toggle=1;
+						}
+						
+						else
+						{	
+							toggle=0;				
+							recorder.stop();
+					}
 					});
 				})

@@ -3,7 +3,9 @@ body {
     background-color: white;
     margin: inherit;
 }
-
+.record-icon{
+    color:blue;
+}
 .venue-address {
     cursor: pointer;
     text-decoration: underline;
@@ -298,7 +300,7 @@ p {
     /* width: 96%; */
     /* margin: 30px auto; */
     /* background-color: rgb(245, 249, 255); */
-    padding: 44px;
+    /* padding: 44px; */
 }
 
 .left-main-wrapper {

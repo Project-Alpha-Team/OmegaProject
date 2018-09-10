@@ -37,6 +37,10 @@ app.get("/public/images/bg-masthead.jpg", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/images/bg-masthead.jpg"));
   
 });
+app.get("/contact", function(req, res) {
+  res.render("contact");
+  
+});
 
 
 /* **************************************************************************** */

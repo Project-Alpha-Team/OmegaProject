@@ -150,17 +150,17 @@ body {
     /* Black w/ opacity */
 }
 
-.modal-wrapper {
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 85%;
+    width: 80%;
 }
 
 /* The Close Button (x) */
 .close {
-    /* position: absolute; */
+    position: absolute;
     right: 35px;
     top: 15px;
     font-size: 40px;
@@ -169,7 +169,7 @@ body {
 }
 
 /* Full-width input fields */
-.modal-wrapper input[type=text],
+.modal-content input[type=text],
 input[type=password] {
     width: 100%;
     padding: 15px;
@@ -180,13 +180,13 @@ input[type=password] {
 }
 
 /* Add a background color when the inputs get focus */
-.modal-wrapper input[type=text]:focus,
+.modal-content input[type=text]:focus,
 input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
 
-.modal-wrapper button {
+.modal-content button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -464,9 +464,8 @@ textarea.form-control {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    padding-left: 50px;
-    margin-right: 0px;
+    width: 50%;
+    padding-left: 40px;
 }
 
 .form-control {
@@ -738,58 +737,4 @@ li i {
 .link-white {
     text-decoration: none;
     color: white;
-}
-
-/* responsive  */
-@media screen and (max-width: 640px) {
-    .jumbotron {
-        width: 90%;
-    }
-
-    #logo {
-        width: 100%;
-    }
-
-    .navbar {
-        width: 100%
-    }
-
-    .navdiv {
-        text-align: center;
-    }
-
-    .auth-image {
-        float: none;
-        width: 350px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .jumbotron {
-        width: 90%;
-    }
-
-    #logo {
-        width: 100%;
-    }
-
-    .navbar {
-        width: 100%
-    }
-
-    .navdiv {
-        text-align: center;
-    }
-
-    .auth-image {
-        float: none;
-        width: 350px;
-    }
-}
-
-@media screen and (max-width: 980px) {
-    .jumbotron {
-        /* background-color: red; */
-        width: 90%;
-    }
 }

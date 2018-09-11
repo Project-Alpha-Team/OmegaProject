@@ -110,15 +110,18 @@ $(document).ready(() => {
 		// console.log('YOUR EMAIL and PASSWORD IS: ' + email + ', ' + password);
 		console.log('e', e);
 
-		var newEmail = {
+		var newAccount = {
+			firstName: $("#user_firstName").val().trim(),
+			lastName: $("#user_lastName").val().trim(),
 			email: $("#account-email").val().trim(),
-			password: $("#account-password").val().trim()
-		  };
+			verified: false,
+			opt_out: false
+		};
 
 		$.ajax({
 			type: "post",
 			url: "/api/new_email",
-			data: newEmail,
+			data: newAccount,
 		}).then(function(data){
 			console.log("successfully sent new email to server.");
 			modal.style.display = "none";

@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload');
 var crypto = require('crypto');
 var request = require('request');
 var path = require("path");
+var Email = require("./app/models/email.js");
 /* **************************************************************************** */
 /* **************************************************************************** */
 
@@ -20,26 +21,22 @@ app.use(fileUpload());
 
 var PORT = process.env.PORT || 8080;
 
-/*app.use(express.static("public")); */
-app.use("/public", express.static(__dirname + '/public'));
+// app.use(express.static("public")); 
+app.use("/app/public", express.static(__dirname + '/app/public'));
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.engine("handlebars", exphbs({
-  defaultLayout: "main"
-}));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
 app.get("/", function (req, res) {
   res.render("index");
   console.log("index loaded \n")
 });
-app.get("/public/images/bg-masthead.jpg", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/images/bg-masthead.jpg"));
+
+app.get("/app/public/images/bg-masthead.jpg", function (req, res) {
+  res.sendFile(path.join(__dirname, "/app/public/images/bg-masthead.jpg"));
 
 });
 app.get("/contact", function (req, res) {
@@ -198,12 +195,25 @@ app.post('/voice_search', function (req, res) {
 /* *******************************   EMAIL SYSTEM   ********************************************* */
 app.post('/api/new_email', function(req, res) {
   console.log('resuest: ', req.body);
+  console.log('resuest: ', req.body);
   res.json(req.body);
 })
 
+
+app.get("/api/all", function(req, res) {
+  Email.findAll({}).then(function(results) {
+    res.json(results);
+  });
+});
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
+
+process.on( "SIGINT", function() {
+  console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
+  // connection.end();
+  process.exit();
+})

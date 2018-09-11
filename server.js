@@ -191,10 +191,15 @@ app.post('/voice_search', function (req, res) {
 });
 
 /* **************************************************************************** */
-/* **************************************************************************** */
 
 
 
+
+/* *******************************   EMAIL SYSTEM   ********************************************* */
+app.post('/api/new_email', function(req, res) {
+  console.log('resuest: ', req.body);
+  res.json(req.body);
+})
 
 
 // Start our server so that it can begin listening to client requests.

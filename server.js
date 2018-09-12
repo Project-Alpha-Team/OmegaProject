@@ -12,7 +12,9 @@ const fileUpload = require('express-fileupload');
 var crypto = require('crypto');
 var request = require('request');
 var path = require("path");
-var Email = require("./app/models/email.js");
+// var Email = require("./app/models/email.js");
+var emailRouter = require("./app/routes/emailRoutes.js");
+
 /* **************************************************************************** */
 /* **************************************************************************** */
 
@@ -27,9 +29,13 @@ app.use("/app/public", express.static(__dirname + '/app/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(emailRouter);
+
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+
 app.get("/", function (req, res) {
   res.render("index");
   console.log("index loaded \n")
@@ -39,6 +45,7 @@ app.get("/app/public/images/bg-masthead.jpg", function (req, res) {
   res.sendFile(path.join(__dirname, "/app/public/images/bg-masthead.jpg"));
 
 });
+
 app.get("/contact", function (req, res) {
   res.render("contact");
 
@@ -199,12 +206,10 @@ app.post('/api/new_email', function(req, res) {
   res.json(req.body);
 })
 
+// require("./app/routes/emailRoutes.js")(app);
 
-app.get("/api/all", function(req, res) {
-  Email.findAll({}).then(function(results) {
-    res.json(results);
-  });
-});
+
+
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {

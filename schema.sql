@@ -1,0 +1,1 @@
+CREATE DATABASE `bandwagon_email`;

@@ -13,6 +13,14 @@ var Email = sequelize.define("email_account", {
   opt_out: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  createdAt: {
+    type: Sequelize.DATE(3),
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+  },
+  updatedAt: {
+    type: Sequelize.DATE(3),
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
   }
 });
 

@@ -1,3 +1,10 @@
+a {
+    text-decoration: none;
+}
+.jumbotron{
+    background-color: white;
+    background: white;
+}
 body {
     font-family: sans-serif;
     background-color: white;

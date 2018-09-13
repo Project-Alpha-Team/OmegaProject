@@ -18,6 +18,42 @@
 
 <div class='email-make-wrapper'>
     <div>
+        <h1>EMAIL</h1>
+            <div class='email-wrapper container' style='height: 500px;'>
+                <form group='i'>
+                    {{!-- <div class="container"> --}}
+                        <div>
+                        <input type="radio" name="emailType" value="invitation"> Invitation
+                        <input type="radio" name="emailType" value="promotion"> Promotion
+                        <input type="radio" name="emailType" value="standard"> Standard
+                        </div>
+                </form>
+                    
+                <form group='i'>
+
+                        <div class="email-form-content">
+                        <label for="subject"><b>Subject: </b></label>
+                        <input id='email_subject' type="text" name="subject">
+                        </div>
+
+                        <div class="email-form-content">
+                        <label for="text"><b>Text: </b></label>
+                        <input id='email_text' type="text" name="text">
+                        </div>
+
+                        <div class="email-form-content">
+                        <label for="sender"><b>From: </b></label>
+                        <input id='email_sender' type="text" name="sender">
+                        </div>
+                
+                        <button id='sendEmail' type="submit" class="signupbtn">Send Eamil</button>
+                </form>
+                
+            </div>
+       
+
+    </div>
+
     
 	{{!-- {{ email }} --}}
 
@@ -27,52 +63,3 @@
 
 
 </div>
-
-<footer class="black-foot">
-    <div class="footer-wrapper">
-        <div class="component-wrapper-left">
-            <a class="link-white" href="index.html">
-
-            </a>
-            <div class="icon-wrapper">
-                <ul>
-                    <li class="icon">
-                        <a href="https://www.linkedin.com">
-                            <i class="fab fa-linkedin fa-2x" alt="linkedin icon"></i>
-                        </a>
-                    </li>
-                    <li class="icon">
-                        <a href="https://github.com/Project-Alpha-Team/OmegaProject">
-                            <i class="fab fa-github fa-2x" alt="github icon"></i>
-                        </a>
-                    </li>
-                    <li class="icon">
-                        <a href="https://www.facebook.com">
-                            <i class="fab fa-facebook-square fa-2x" alt="facebook icon"></i>
-                        </a>
-                    </li>
-                    <li class="icon">
-                        <a href="https://twitter.com">
-                            <i class="fab fa-twitter-square fa-2x" alt="twitter icon"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="component-wrapper-right">
-
-
-            <div class="fourth-footer">
-                <h2>Who are we ?</h2>
-                <br>
-                <ul class="footer-contents">
-                    <li>About Us</li>
-                    <li>
-                        <a href="./contact" style="text-decoration:none">Contact Us</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>

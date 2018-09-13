@@ -1,9 +1,11 @@
+require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 // var path = require("path");
 var app = express();
 var exphbs = require("express-handlebars");
 var emailRouter = require("./app/routes/emailRoutes.js");
+
 
 var PORT = process.env.PORT || 8080;
 app.use("/app/public", express.static(__dirname + '/app/public'));

@@ -8,19 +8,21 @@ var Email = sequelize.define("email_account", {
   email_address: Sequelize.STRING,
   verified: {
     type: Sequelize.BOOLEAN,
+    allowNull: false,
     defaultValue: false
   },
   opt_out: {
     type: Sequelize.BOOLEAN,
+    allowNull: false,
     defaultValue: false
   },
   createdAt: {
     type: Sequelize.DATE(3),
-    defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    defaultValue: sequelize.NOW
   },
   updatedAt: {
     type: Sequelize.DATE(3),
-    defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    defaultValue: sequelize.NOW
   }
 });
 

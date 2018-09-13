@@ -2,30 +2,36 @@
 const express = require("express");
 const Email = require("../models/email.js");
 const emailRouter = express.Router();
-const exphbs = require("express-handlebars");
+// const exphbs = require("express-handlebars");
+// const app = express();
 
 
 
 // ================================== Routes =====================================//
-// emailRouter.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// emailRouter.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
 
 // Get all email address
-emailRouter.get("/api/email/all", function(req, res) {
+emailRouter.get("/email/all", function(req, res) {
     Email.findAll({}).then(function(results) {
       res.json(results);
     });
 });
 
-emailRouter.post('/api/email/new_account', function(req, res) {
-    console.log('resuest.dody is: ', req.body.firstName + ", " + req.body.lastName + ", " + req.body.email_address);
+emailRouter.post('/email/new_account', function(req, res) {
+    console.log(req.body);
+    console.log('resuest.dody is: ', req.body.firstName + ", " + req.body.lastName + ", " + req.body.email);
     Email.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email_address: req.body.email_address,
-    }).then(function(result) {
-        res.json(result);  
+        email_address: req.body.email,
+        verified: req.body.verified,
+        opt_out: req.body.opt_out
+    }).then(function(data) {
+        console.log('results', data);
+        res.json({ id: result.insertId });  
+        console.log('the data is stored');
     })
     .catch(function(err) {
         // Whenever a validation or flag fails, an error is thrown
@@ -34,18 +40,25 @@ emailRouter.post('/api/email/new_account', function(req, res) {
     });
 });
 
+// app.post('/api/new_email', function(req, res) {
+//     console.log('resuest: ', req.body);
+//     console.log('resuest: ', req.body);
+//     res.json(req.body);
+// })
 
-emailRouter.get("/api/email/make", function(req, resp) {
+
+emailRouter.get("/email/make", function(req, res) {
     Email.findAll({
     where: {
         verified: false,
         opt_out: false
     }
-    }).then(function(resp) {
-        resp.render("emailMaker");
+    }).then(function(results) {
+        // console.log('its before render handlebars!')
+        res.render("emailMaker", results);
     })
     .catch(function(err) {
-        resp.json(err);
+        res.json(err);
     });
 });
 

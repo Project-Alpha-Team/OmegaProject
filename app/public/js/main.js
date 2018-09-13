@@ -120,7 +120,7 @@ $(document).ready(() => {
 
 		$.ajax({
 			type: "post",
-			url: "/api/new_email",
+			url: "/email/new_account",
 			data: newAccount,
 		}).then(function(data){
 			console.log("successfully sent new email to server.");

@@ -1,19 +1,15 @@
-var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
-var url = require('url');
-var fs = require('fs');
+// var url = require('url');
 const fileUpload = require('express-fileupload');
 var crypto = require('crypto');
 var request = require('request');
 var path = require("path");
-// var Email = require("./app/models/email.js");
-var emailRouter = require("./emailRoutes.js");
 module.exports = function(app) {
 
 
 
 app.use(fileUpload());
-app.use(emailRouter);
+// app.use(emailRouter);
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

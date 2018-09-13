@@ -16,18 +16,21 @@ var Email = sequelize.define("email_account", {
     allowNull: false,
     defaultValue: false
   },
-  createdAt: {
-    type: Sequelize.DATE(3),
-    defaultValue: sequelize.NOW
-  },
-  updatedAt: {
-    type: Sequelize.DATE(3),
-    defaultValue: sequelize.NOW
-  }
+  
+  // createdAt: {
+  //   type: Sequelize.DATE(3),
+  //   defaultValue: sequelize.NOW
+  // },
+  // updatedAt: {
+  //   type: Sequelize.DATE(3),
+  //   defaultValue: sequelize.NOW
+  // }
 });
 
 // Syncs with DB
-Email.sync();
+Email.sync().then(function() {
+  console.log("Database is synchronized.")
+});
 
 // Makes the Book Model available for other files (will also create a table)
 module.exports = Email;

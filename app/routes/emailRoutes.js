@@ -2,6 +2,7 @@
 const express = require("express");
 const Email = require("../models/email.js");
 const emailRouter = express.Router();
+const nodemailer = require('nodemailer');
 // const exphbs = require("express-handlebars");
 // const app = express();
 
@@ -62,27 +63,82 @@ emailRouter.get("/email/make", function(req, res) {
     });
 });
 
-// // Get all books of a specific genre
-// app.get("/api/genre/:genre", function(req, res) {
-//     Book.findAll({
-//     where: {
-//         genre: req.params.genre
-//     }
-//     }).then(function(results) {
-//     res.json(results);
-//     });
-// });
 
-// // Get all books from a specific author
-// app.get("/api/author/:author", function(req, res) {
-//     Book.findAll({
-//     where: {
-//         author: req.params.author
-//     }
-//     }).then(function(results) {
-//     res.json(results);
-//     });
-// });
+emailRouter.post("/email/send_email", function(req, res) {
+    console.log("The email request is: ", req.body);
+
+    Email.findAll({
+        where: {
+            verified: true,
+            opt_out: false
+        }
+    }).then(function(results) {
+        console.log("Verified and NOT opt out emails are found.", results[0].dataValues);
+        console.log("Verified and NOT opt out emails are found.", results[1].dataValues);
+        // res.json(results);
+        // let emailInfo = {
+        //     address: emailAddress,
+        //     subject: req.body.subject,
+        //     text: req.body.text,
+        // }
+        const length = results.length;
+        let i = 0;
+        while (i < length) {
+            let emailInfo = {
+                firstName: results[i].dataValues.firstName,
+                lastName: results[i].dataValues.lastName,
+                address: results[i].dataValues.email_address,
+            }
+            sendEmail(emailInfo.firstName, emailInfo.lastName, emailInfo.address, req.body.subject, req.body.text);
+
+            i++;
+        } 
+
+        res.status(200).json({
+            message: 'Emails have sent'
+        });
+    }).catch(function(err) {
+        res.json(err);
+        console.log("There\'s error on sending email.", err);
+    });
+});
+
+
+const sendEmail = (firstName, lastName, emailAddress, subject, text) => {
+    try {
+    nodemailer.createTestAccount((err, account) => {
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            ssl: true,
+            auth: {
+                user: 'bandwagon.ucbx@gmail.com', // generated ethereal user
+                pass: 'bandwagon2018' // generated ethereal password
+            }
+        });
+    
+        // setup email data with unicode symbols
+        let mailOptions = {
+            from: '"Bandwagon👻" <bandwagon.ucbx@gmail.com>', 
+            to: emailAddress, 
+            subject: subject,
+            text: text,
+            html: '<b>' + text + '</b>' // html body
+        };
+    
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log("this is what\'s returned: ", info);
+
+        });
+    })}
+    catch(err) {
+        throw err;
+    }
+}
 
 // // Get all "long" books (books 150 pages or more)
 // app.get("/api/books/long", function(req, res) {
@@ -112,28 +168,6 @@ emailRouter.get("/email/make", function(req, res) {
 //     });
 // });
 
-// // Add a book
-// app.post("/api/new", function(req, res) {
-//     console.log("Book Data:");
-//     console.log(req.body);
-//     Book.create({
-//     title: req.body.title,
-//     author: req.body.author,
-//     genre: req.body.genre,
-//     pages: req.body.pages
-//     });
-// });
-
-// // Delete a book
-// app.post("/api/delete", function(req, res) {
-//     console.log("Book Data:");
-//     console.log(req.body);
-//     Book.destroy({
-//     where: {
-//         id: req.body.id
-//     }
-//     });
-// });
   
   
 

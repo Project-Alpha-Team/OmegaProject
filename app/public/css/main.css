@@ -801,3 +801,25 @@ li i {
         width: 90%;
     }
 }
+
+
+
+
+/*         Routes                */
+
+.email-wrapper {
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+}
+
+.email-form-content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.email-form-content input {
+    text-transform: none;
+    height: 40px;
+    width: 40%;
+}

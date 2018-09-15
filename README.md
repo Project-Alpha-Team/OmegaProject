@@ -8,4 +8,4 @@ BandWagon is a music identification app that can tell you all about a song, whet
    
    3-	Event search 
 
-Deployed on Heroku: [BandWagon](https://omegagroup.herokuapp.com/)
+Deployed on Heroku: [BandWagon](https://bandwagon-ucbx.herokuapp.com/)

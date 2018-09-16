@@ -1,6 +1,7 @@
 a {
     text-decoration: none;
 }
+
 .jumbotron{
     background-color: white;
     background: white;
@@ -282,7 +283,7 @@ p {
 }
 
 .head-jumbo .jumbotron {
-    background-image: url(bg-masthead.jpg);
+    background-image: url("../images/bg-masthead.jpg");
     border-radius: 0;
     /* height:400px; */
 }

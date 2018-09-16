@@ -73,8 +73,12 @@ emailRouter.post("/email/send_email", function(req, res) {
             opt_out: false
         }
     }).then(function(results) {
+        if (results.length !== 0) {
+            console.log("results are: ", results)
+
+        
         console.log("Verified and NOT opt out emails are found.", results[0].dataValues);
-        console.log("Verified and NOT opt out emails are found.", results[1].dataValues);
+        // console.log("Verified and NOT opt out emails are found.", results[1].dataValues);
         // res.json(results);
         // let emailInfo = {
         //     address: emailAddress,
@@ -97,6 +101,13 @@ emailRouter.post("/email/send_email", function(req, res) {
         res.status(200).json({
             message: 'Emails have sent'
         });
+
+        } else {
+            console.log("no email address found.")
+            res.status(200).json({
+                message: 'No email address found'
+            })
+        }
     }).catch(function(err) {
         res.json(err);
         console.log("There\'s error on sending email.", err);

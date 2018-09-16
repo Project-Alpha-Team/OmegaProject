@@ -1,3 +1,6 @@
+// const TIMESTAMP = require('sequelize-mysql-timestamp')(sequelize)
+var Sequelize = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   const email = sequelize.define('Email', {
   firstName: DataTypes.STRING,
@@ -14,20 +17,22 @@ module.exports = (sequelize, DataTypes) => {
     defaultValue: false
   },
   
-  // createdAt: {
-  //   type: Sequelize.DATE(3),
-  //   defaultValue: sequelize.NOW
-  // },
-  // updatedAt: {
-  //   type: Sequelize.DATE(3),
-  //   defaultValue: sequelize.NOW
-  // }
+  createdAt: {
+    type: 'TIMESTAMP',
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false
+  },
+  updatedAt: {
+    type: 'TIMESTAMP',
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false
+  }
 });
 
 // Syncs with DB
-// Email.sync().then(function() {
-//   console.log("Database is synchronized.")
-// });
+email.sync().then(function() {
+  console.log("Database is synchronized.")
+});
 
 // Makes the Book Model available for other files (will also create a table)
 return email;

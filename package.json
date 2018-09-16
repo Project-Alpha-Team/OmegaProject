@@ -29,7 +29,7 @@
     "nodemailer": "^4.6.8",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "sequelize": "^4.38.0",
+    "sequelize": "^4.38.1",
     "url": "^0.11.0"
   }
 }

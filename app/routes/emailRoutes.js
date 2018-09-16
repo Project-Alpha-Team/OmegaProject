@@ -1,6 +1,6 @@
 //******************* dependencies ***********************//
 const express = require("express");
-const Email = require("../models/email.js");
+const db = require("../../models");
 const emailRouter = express.Router();
 const nodemailer = require('nodemailer');
 // const exphbs = require("express-handlebars");
@@ -15,7 +15,7 @@ const nodemailer = require('nodemailer');
 
 // Get all email address
 emailRouter.get("/email/all", function(req, res) {
-    Email.findAll({}).then(function(results) {
+    db.Email.findAll({}).then(function(results) {
       res.json(results);
     });
 });
@@ -23,7 +23,7 @@ emailRouter.get("/email/all", function(req, res) {
 emailRouter.post('/email/new_account', function(req, res) {
     console.log(req.body);
     console.log('resuest.dody is: ', req.body.firstName + ", " + req.body.lastName + ", " + req.body.email);
-    Email.create({
+    db.Email.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email_address: req.body.email,
@@ -49,7 +49,7 @@ emailRouter.post('/email/new_account', function(req, res) {
 
 
 emailRouter.get("/email/make", function(req, res) {
-    Email.findAll({
+    db.Email.findAll({
     where: {
         verified: false,
         opt_out: false
@@ -67,7 +67,7 @@ emailRouter.get("/email/make", function(req, res) {
 emailRouter.post("/email/send_email", function(req, res) {
     console.log("The email request is: ", req.body);
 
-    Email.findAll({
+    db.Email.findAll({
         where: {
             verified: true,
             opt_out: false
